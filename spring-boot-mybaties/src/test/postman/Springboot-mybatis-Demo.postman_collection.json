@@ -1,0 +1,121 @@
+{
+	"id": "5e5a21b4-5b74-a11f-df44-e134b7c9f8f9",
+	"name": "Springboot-mybatis-Demo",
+	"description": "",
+	"order": [
+		"aef7e9aa-68a1-7655-7305-c99efaca1bcd",
+		"d4178ac3-572b-21e9-4e68-6308104454b4",
+		"16fabd5a-20f4-6af2-e9e0-dc9f54ace1de",
+		"edcc5724-0a24-8859-fb37-8fb8a2434d91"
+	],
+	"folders": [],
+	"timestamp": 1495604736679,
+	"owner": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "16fabd5a-20f4-6af2-e9e0-dc9f54ace1de",
+			"headers": "Content-Type: application/json\n",
+			"url": "localhost:8080/insertStu",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1495606496807,
+			"name": "用@Request Body方式添加学生",
+			"description": "",
+			"collectionId": "5e5a21b4-5b74-a11f-df44-e134b7c9f8f9",
+			"responses": [],
+			"rawModeData": "{\n    \"school\":\"tianjin\",\n\t\"stuNum\":\"001\"\n}"
+		},
+		{
+			"id": "aef7e9aa-68a1-7655-7305-c99efaca1bcd",
+			"headers": "",
+			"url": "localhost:8080/test1",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "5e5a21b4-5b74-a11f-df44-e134b7c9f8f9",
+			"data": null,
+			"dataMode": "params",
+			"name": "请求test1",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1495604736679,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "d4178ac3-572b-21e9-4e68-6308104454b4",
+			"headers": "Content-Type: application/json; application/x-www-form-urlencoded; charset=UTF-8\n",
+			"url": "localhost:8080/insertStu2",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "school",
+					"value": "2323",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "stuNum",
+					"value": "002",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1495606219117,
+			"name": "添加一个学生的接口",
+			"description": "",
+			"collectionId": "5e5a21b4-5b74-a11f-df44-e134b7c9f8f9",
+			"responses": []
+		},
+		{
+			"id": "edcc5724-0a24-8859-fb37-8fb8a2434d91",
+			"headers": "Content-Type: application/json; application/x-www-form-urlencoded; charset=UTF-8\n",
+			"url": "localhost:8080/insertStu1",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "school",
+					"value": "2323",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "stuNum",
+					"value": "002",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1495606524322,
+			"name": "用参数方式添加学生",
+			"description": "",
+			"collectionId": "5e5a21b4-5b74-a11f-df44-e134b7c9f8f9",
+			"responses": []
+		}
+	]
+}

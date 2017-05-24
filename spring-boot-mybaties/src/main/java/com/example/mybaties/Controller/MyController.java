@@ -2,6 +2,7 @@ package com.example.mybaties.Controller;
 
 import com.example.mybaties.dao.StudentDaoImpl;
 import com.example.mybaties.model.Student;
+import com.example.mybaties.utils.ResultModel;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 
@@ -30,7 +31,7 @@ public class MyController {
     }
 
     @RequestMapping(value = "/insertStu",method = RequestMethod.POST)
-    public void insertStu(@RequestBody Student student){
+    public ResultModel insertStu(@RequestBody Student student){
 
         StudentDaoImpl stuDao = null;
         try {
@@ -38,13 +39,15 @@ public class MyController {
             Student stu = stuDao.insertStudent(student);
             System.out.println(stu.getId());
 
+            return new ResultModel(0,stu,"Success");
         } catch (Exception e) {
             e.printStackTrace();
+            return new ResultModel(1,null,e.getMessage());
         }
     }
 
     @PostMapping(value = "/insertStu2")
-    public void insertStu2(String school,String stuNum){
+    public ResultModel insertStu2(String school,String stuNum){
         StudentDaoImpl stuDao = null;
         try {
             stuDao = new StudentDaoImpl();
@@ -54,18 +57,19 @@ public class MyController {
             stuDao.insertStudent(stu);
             System.out.println(stu.getId());
 
+            return new ResultModel(0,stu,"success");
         } catch (Exception e) {
             e.printStackTrace();
+            return new ResultModel(1,null,e.getMessage());
         }
     }
 
     @RequestMapping(value = "/insertStu1",method = RequestMethod.POST)
-    public void insertStu1(@RequestParam("school")String school,@RequestParam("stuNum")String stuNum){
+    public ResultModel insertStu1(@RequestParam("school")String school,@RequestParam("stuNum")String stuNum){
 
         StudentDaoImpl stuDao = null;
         try {
             stuDao = new StudentDaoImpl();
-
 
             Student stu = new Student();
             stu.setSchool(school);
@@ -73,8 +77,12 @@ public class MyController {
             stuDao.insertStudent(stu);
             System.out.println(stu.getId());
 
+
+            return new ResultModel(0,stu,"success");
+
         } catch (Exception e) {
             e.printStackTrace();
+            return new ResultModel(1,null,e.getMessage());
         }
 
      }

@@ -44,7 +44,6 @@ public class TestMethod1 {
 
     @Test
     public void testSelect(){
-
         Student stu = new Student();
         stu.setId(7);
 

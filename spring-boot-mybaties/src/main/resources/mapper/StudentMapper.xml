@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mybaties.model.Student">
+    <!-- 主键自增长 并且还回配置  useGeneratedKeys="true"  keyProperty="fid"-->
+    <!-- user为bean简写 配置在 mybatis-configuration.xml的typeAliases中 -->
+
+    <!--<resultMap id="student" type="model.Student">-->
+        <!--<id property="id" column="id"></id>-->
+        <!--<result property="school" column="school"></result>-->
+        <!--<result property="stuNum" column="stu_num"></result>-->
+        <!--<result property="enterTime" column="enter_time"></result>-->
+    <!--</resultMap>-->
+    <resultMap id="studentResult" type="com.example.mybaties.model.Student">
+        <id property="id" column="id"></id>
+        <result property="school" column="school"></result>
+        <result property="stuNum" column="stu_num"></result>
+        <result property="enterTime" column="enter_time"></result>
+    </resultMap>
+
+    <insert id="insert" parameterType="student">
+        insert into student(school,stu_num,enter_time) values(#{school},#{stuNum},#{enterTime})
+    </insert>
+
+    <select id="selectStudent" parameterType="int" resultType="com.example.mybaties.model.Student">
+        SELECT * FROM student WHERE ID = #{id}
+
+    </select>
+    <select id="searchStudent" resultType="com.example.mybaties.model.Student">
+        SELECT * from student s
+        <if test="stuNum != null">
+               WHERE stu_Num like #{stuNum}
+        </if>
+    </select>
+
+    <select id="selectStudentByMap" parameterType="int" resultMap="studentResult">
+        SELECT * FROM student WHERE ID = #{id}
+    </select>
+    
+    <resultMap id="stuResult" type="com.example.mybaties.model.Student">
+        <result property="stuNum" column="stu_num"></result>
+        <result property="school" column="school"></result>
+        <collection property="articleList" javaType="ArrayList"
+                    column="id" ofType="model.Article" select="findArticle"></collection>
+    </resultMap>
+
+    <select id="findStu" resultMap="stuResult">
+        select * from student where id = #{id}
+    </select>
+
+    <!-- 缓存 -->
+    <cache eviction="FIFO" flushInterval="60000" size="512" readOnly="true"></cache>
+    
+
+
+
+
+
+
+
+
+</mapper>

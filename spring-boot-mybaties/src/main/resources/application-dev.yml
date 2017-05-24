@@ -1,0 +1,20 @@
+mybatis:
+  type-aliases-package: com.example.mybaties.model
+  mapper-locations:classpath: mapper/*.xml
+  config: classpath:mapper/mybatis-config.xml
+#  config: classpath:mybatis-config.xml
+MyPro:
+  name: 张三
+spring:
+  mvc:
+    view:
+      prefix: src/main/webapp/pages
+      suffix: .html
+
+
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+

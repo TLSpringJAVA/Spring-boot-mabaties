@@ -5,13 +5,18 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.springframework.stereotype.Component;
 
 import java.io.Reader;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by anlu on 2017/5/8.
  */
+@Component
 public class StudentDaoImpl implements StudentDao {
 
     private SqlSession sqlSession;
@@ -47,6 +52,19 @@ public class StudentDaoImpl implements StudentDao {
 
     @Override
     public Student selectStu(Integer stuId) {
-        return null;
+
+        Student stu = new Student();
+        Student student = sqlSession.selectOne("selectStudent",stu);
+        return student;
+    }
+
+    @Override
+    public List<Student> findStuByPage(Integer pageNum, Integer pageSize) {
+
+        Map<String,Object> map = new HashMap<String,Object>();
+        map.put("start",pageNum);
+        map.put("pagesize",pageSize);
+        List<Student> list = sqlSession.selectList("com.example.mybaties.model.Student.findStuByPage",map);
+        return list;
     }
 }

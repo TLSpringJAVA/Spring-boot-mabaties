@@ -17,4 +17,5 @@ pagehelper:
     reasonable: true
     supportMethodsArguments: true
     params: count=countSql
+    dialect: com.github.pagehelper.dialect.helper.MySqlDialect
 

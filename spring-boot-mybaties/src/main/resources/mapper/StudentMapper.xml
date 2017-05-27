@@ -47,6 +47,14 @@
         select * from student where id = #{id}
     </select>
 
+    <!-- 分页查询-->
+    <select id="findStuByPage" parameterType="Map" resultType="com.example.mybaties.model.Student">
+        select * from student
+        <if test="start!=null and pagesize!=null">
+            limit #{start},#{pagesize}
+        </if>
+    </select>
+
     <!-- 缓存 -->
     <cache eviction="FIFO" flushInterval="60000" size="512" readOnly="true"></cache>
     
